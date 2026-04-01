@@ -10,92 +10,63 @@ Transform the existing zeuer.github.io static HTML site into a professional, sca
 - **Payment**: Stripe (via emergentintegrations library)
 - **Auth**: JWT with httpOnly cookies + bcrypt password hashing
 
-## User Personas
-1. **Customer**: Browse products, add to cart, checkout with Stripe, view order history
-2. **Admin**: Manage orders, view analytics, manage products, track users
+## Official Brand Identity (from Brandbook)
+### Color Palette
+- Primary: Negro profundo #0A0A0A, Azul eléctrico #0A6CFF, Cian #18C8FF, Blanco frío #EAF6FF
+- Secondary: Azul oscuro #0E1B2A, Gris azulado #2A3A4F
+- Accent: Verde neón #00FF9C, Morado eléctrico #7A5CFF
 
-## Core Requirements (Static)
-- Spanish language UI ("Zeuer" brand identity)
-- Dark theme (#0A0A0A background, #ff3c3c accent)
-- Font system: Unbounded (headings), Manrope (body), IBM Plex Mono (labels/specs)
-- Mobile-first responsive design
-- Secure JWT auth with brute force protection
+### Typography
+- Headings/Identity: Unbounded (SemiBold, Bold, ExtraBold)
+- Body/Functional: DM Sans (Regular, Medium)
+- Labels/Specs: IBM Plex Mono
 
-## What's Been Implemented (April 1, 2026)
+### Visual Effects
+- Logo: Black with pulsing blue neon glow (CSS animation)
+- Cards: Glassmorphism (backdrop-blur-24px, rgba(14,27,42,0.6) bg, blue border)
+- Product pages: Blue gradient shape behind product image
+- Buttons: Rounded-lg, blue (#0A6CFF), with box-shadow glow
 
-### Backend (FastAPI)
-- JWT Authentication (register, login, logout, me, refresh, forgot-password, reset-password)
-- Admin seeding with role-based access
-- Brute force login protection
-- Product catalog API with filtering (category, search, size, price)
-- Shopping cart API (add, update, remove, auto-calculation with 16% IVA)
-- Stripe checkout integration (create session, poll status, webhook)
-- Order management (create after payment, history)
-- Admin dashboard API (revenue, orders, users, analytics)
-- Admin order status management
-- Admin product management
-- Analytics event tracking (views, add-to-cart, purchases)
-- Newsletter subscription
-- MongoDB indexes for performance
+## What's Been Implemented
 
-### Frontend (React)
-- Homepage: Hero with logo/tagline, marquee banner, featured products, drops section, brand story, newsletter
-- Shop page: Product grid with category/size filters, search
-- Product detail: Image, sizes, colors, stock indicator, quantity selector, add-to-cart
-- Auth: Login/Register form, forgot password flow
-- Cart sidebar (Sheet component) with quantity controls
-- Checkout page with Stripe redirect
-- Payment success page with polling
-- User profile with address management
-- Order history page
-- Admin panel: Dashboard (revenue, orders, users, products, analytics), order management with status updates, user list, analytics charts
-- Responsive mobile-first design with hamburger menu
-- Toast-ready design system
+### Phase 1 - MVP (April 1, 2026)
+- Full JWT auth system with bcrypt, brute force protection
+- 6-product catalog with category/size/search filtering
+- Shopping cart with IVA calculation
+- Stripe checkout integration
+- Admin dashboard with analytics
+- Responsive mobile-first design
 
-### Products Seeded (6)
-1. Kit Irapuato '67 - $449 MXN (Jerseys)
-2. Zeuer x DWNC - $599 MXN (Collaborations)
-3. Zeuer GB Concept - $649 MXN (Concepts)
-4. Zeuer Stealth Tee - $349 MXN (Basics)
-5. Zeuer Track Pants - $549 MXN (Bottoms)
-6. Zeuer Logo Cap - $299 MXN (Accessories)
+### Phase 2 - Brand Rebrand (April 1, 2026)
+- Applied official brandbook colors (red → blue)
+- Replaced Manrope with DM Sans body font
+- Added glassmorphism card system (.glass-card CSS class)
+- Hero: Black logo with pulsing blue neon glow animation
+- Product detail: Blue gradient shape behind product, glassmorphism info card
+- Rounded buttons/inputs throughout
+- Updated all pages: Home, Shop, Product, Auth, Cart, Checkout, Profile, Orders, Admin
+- Catalog style integrated matching base reference (glassmorphism, blue glow, size pills)
 
-## Prioritized Backlog
+## Testing Status
+- Backend APIs: 12/12 passed
+- Frontend: All pages verified working
+- Auth flow: Login/Register/Logout verified
+- Admin panel: Dashboard, orders, users tabs working
+- Cart/Checkout: Add-to-cart, quantity update, Stripe redirect verified
 
-### P0 (Critical - Done)
-- [x] Authentication system
-- [x] Product catalog with filtering
-- [x] Shopping cart
-- [x] Stripe checkout
-- [x] Admin panel
-- [x] Responsive design
-
-### P1 (High - Next)
-- [ ] Email confirmations (order, signup) via SendGrid/Resend
+## Backlog
+### P1
+- [ ] Email confirmations (orders/signup)
 - [ ] PWA manifest + service worker
 - [ ] Product image gallery (multiple images)
-- [ ] Inventory management (stock decrement on purchase)
+- [ ] Inventory stock management
+### P2
 - [ ] Wishlist (separate from cart)
-
-### P2 (Medium)
-- [ ] Dark/Light mode toggle
-- [ ] Order tracking with shipping updates
-- [ ] Product reviews/ratings
-- [ ] Social sharing
-- [ ] SEO meta tags per product page
-- [ ] Admin: export orders CSV
-
-### P3 (Low/Future)
+- [ ] Order tracking
+- [ ] Product reviews
+- [ ] SEO meta tags per product
+### P3
 - [ ] OAuth Google login
-- [ ] Multi-currency support
-- [ ] Discount codes/coupons
-- [ ] Size guide
+- [ ] Multi-currency
+- [ ] Discount codes
 - [ ] Related products recommendations
-- [ ] Blog/content section
-
-## Next Tasks
-1. Email confirmations for orders and signups
-2. PWA setup for mobile-first experience
-3. Product gallery with multiple images
-4. Inventory stock management
-5. Wishlist feature
