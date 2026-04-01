@@ -1,0 +1,110 @@
+{
+  "theme": "DARK",
+  "archetype": "2 (Performance Pro)",
+  "colors": {
+    "background": "#0A0A0A",
+    "surface": "#151515",
+    "surface_hover": "#1F1F1F",
+    "primary_text": "#FFFFFF",
+    "secondary_text": "#A1A1AA",
+    "accent": "#ff3c3c",
+    "accent_hover": "#e63535",
+    "border": "#27272A",
+    "success": "#22c55e",
+    "error": "#ef4444"
+  },
+  "typography": {
+    "heading_font": "Unbounded, sans-serif",
+    "body_font": "Manrope, sans-serif",
+    "mono_font": "IBM Plex Mono, monospace",
+    "hierarchy": {
+      "h1": "text-4xl md:text-6xl font-black tracking-tighter uppercase",
+      "h2": "text-3xl md:text-4xl font-bold tracking-tight uppercase",
+      "h3": "text-xl md:text-2xl font-bold",
+      "h4": "text-lg md:text-xl font-semibold",
+      "body": "text-base font-normal tracking-wide",
+      "label": "text-xs font-mono uppercase tracking-[0.2em] text-[#A1A1AA]"
+    }
+  },
+  "layout_spacing": {
+    "padding_scale": "p-6 md:p-12 lg:p-24",
+    "container": "max-w-[1440px] mx-auto px-6 md:px-12",
+    "grid_strategy": "Bento grid for marketing sections, technical precise grid with borders for shop product grids"
+  },
+  "surface_styles": {
+    "cards": "bg-[#0A0A0A] border border-[#27272A] rounded-none hover:border-[#ff3c3c] transition-colors relative overflow-hidden",
+    "header": "fixed top-0 w-full z-50 bg-[#0A0A0A]/80 backdrop-blur-xl border-b border-[#27272A]",
+    "buttons": {
+      "primary": "bg-[#ff3c3c] text-white hover:bg-[#e63535] uppercase font-bold tracking-widest rounded-none px-8 py-4 flex items-center justify-center transition-all",
+      "outline": "border border-[#27272A] text-white hover:border-white uppercase font-bold tracking-widest rounded-none bg-transparent px-8 py-4 flex items-center justify-center transition-all",
+      "ghost": "text-[#A1A1AA] hover:text-white uppercase font-bold tracking-widest rounded-none px-4 py-2 transition-colors"
+    },
+    "inputs": "bg-[#151515] border border-[#27272A] rounded-none focus-visible:ring-1 focus-visible:ring-[#ff3c3c] text-white focus-visible:border-[#ff3c3c]"
+  },
+  "motion": {
+    "hover": "transition-all duration-300 ease-out",
+    "page_load": "animate-in fade-in slide-in-from-bottom-8 duration-700",
+    "stagger": "delay-[50ms]"
+  },
+  "media_urls": {
+    "logo": "https://zeuer.github.io/logo.svg",
+    "hero_background": "https://images.unsplash.com/photo-1653104877761-181b3977808e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NDh8MHwxfHNlYXJjaHw0fHxkYXJrJTIwdGV4dHVyZSUyMGFic3RyYWN0JTIwYmFja2dyb3VuZHxlbnwwfHx8fDE3NzUwNzM4NDZ8MA&ixlib=rb-4.1.0&q=85",
+    "brand_shots": [
+      "https://images.unsplash.com/photo-1760509370980-d201b9bc327e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMzJ8MHwxfHNlYXJjaHw0fHxhdGhsZXRpYyUyMHN0cmVldHdlYXIlMjBtb2RlbHxlbnwwfHx8fDE3NzUwNzM4Mjh8MA&ixlib=rb-4.1.0&q=85",
+      "https://images.unsplash.com/photo-1544213889-a552bf037b86?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2OTV8MHwxfHNlYXJjaHwzfHxtZXhpY28lMjBzb2NjZXIlMjBqZXJzZXklMjBtb2RlbCUyMGRhcmt8ZW58MHx8fHwxNzc1MDczODI4fDA&ixlib=rb-4.1.0&q=85"
+    ],
+    "products": [
+      {
+        "id": "irapuato",
+        "name": "Kit Irapuato '67",
+        "price": 449,
+        "description": "Un clásico del '67. Revive la historia con esta pieza icónica de streetwear táctico.",
+        "image": "https://zeuer.github.io/assets/images/jersey.png",
+        "category": "Jerseys"
+      },
+      {
+        "id": "dwnc",
+        "name": "Zeuer x DWNC",
+        "price": 599,
+        "description": "Recuerda ser quien quieras ser. Colaboración exclusiva con diseño de vanguardia.",
+        "image": "https://zeuer.github.io/assets/images/dwnc.png",
+        "category": "Collaborations"
+      },
+      {
+        "id": "zgb",
+        "name": "Zeuer GB Concept",
+        "price": 649,
+        "description": "Excelencia académica. Diseño conceptual para el atleta moderno.",
+        "image": "https://zeuer.github.io/assets/images/zgb.png",
+        "category": "Concepts"
+      }
+    ]
+  },
+  "required_components": [
+    "lucide-react",
+    "framer-motion",
+    "shadcn/button",
+    "shadcn/sheet",
+    "shadcn/input",
+    "shadcn/label",
+    "shadcn/tabs",
+    "shadcn/dialog",
+    "shadcn/toast",
+    "shadcn/badge",
+    "shadcn/table",
+    "shadcn/dropdown-menu",
+    "shadcn/separator"
+  ],
+  "instructions_to_main_agent": [
+    "Strictly use pure HTML/Tailwind for the landing page layouts and grid, breaking standard row/column symmetry to feel edgy.",
+    "Implement the 'Técnico. Táctico. Lógico.' tagline prominently in the Hero section.",
+    "Buttons and cards MUST have zero border-radius (`rounded-none`) to maintain a sharp, technical, athletic vibe.",
+    "Implement the shopping cart as a Sheet (sidebar) sliding in from the right edge.",
+    "Ensure all fonts are imported properly via Google Fonts (Unbounded for headings, Manrope for body, IBM Plex Mono for technical specs/labels).",
+    "Use dark gray (`#27272A`) for borders to create technical structure and grid layouts. Emphasize 1px borders.",
+    "Add 'data-testid' to all interactive elements for robust automated testing (e.g., 'add-to-cart-button', 'mobile-menu-trigger').",
+    "Toast notifications should be dark-themed with red/green accents for success/error to match the brutalist athletic design.",
+    "Ensure the hero image has an overlay like `bg-black/60` to ensure white text is highly readable.",
+    "Implement a marquee effect for the 'Drops/Upcoming Releases' to add kinetic energy to the page using react-fast-marquee or CSS animations."
+  ]
+}
