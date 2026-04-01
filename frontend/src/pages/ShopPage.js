@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-import { motion } from "framer-motion";
 import { SlidersHorizontal, X } from "lucide-react";
 import axios from "axios";
 import ProductCard from "../components/ProductCard";
@@ -24,10 +23,7 @@ export default function ShopPage() {
     if (category) params.set("category", category);
     if (search) params.set("search", search);
     if (size) params.set("size", size);
-    axios.get(`${API}/api/products?${params.toString()}`).then(r => {
-      setProducts(r.data);
-      setLoading(false);
-    }).catch(() => setLoading(false));
+    axios.get(`${API}/api/products?${params.toString()}`).then(r => { setProducts(r.data); setLoading(false); }).catch(() => setLoading(false));
   }, [category, search, size]);
 
   const setFilter = (key, value) => {
@@ -40,97 +36,67 @@ export default function ShopPage() {
   return (
     <div className="min-h-screen bg-[#0A0A0A] pt-20" data-testid="shop-page">
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-12">
-        {/* Header */}
         <div className="flex items-end justify-between mb-8">
           <div>
-            <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#A1A1AA] mb-2" style={{ fontFamily: "'IBM Plex Mono', monospace" }}>Tienda</p>
-            <h1 className="text-3xl md:text-4xl font-bold text-white uppercase tracking-tight" style={{ fontFamily: "'Unbounded', sans-serif" }}>
+            <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#0A6CFF] mb-2">Tienda</p>
+            <h1 className="text-3xl md:text-4xl font-bold text-[#EAF6FF] uppercase tracking-tight" style={{ fontFamily: "'Unbounded', sans-serif" }}>
               {category || (search ? `"${search}"` : "Colección")}
             </h1>
           </div>
-          <button
-            onClick={() => setFilterOpen(!filterOpen)}
-            className="flex items-center gap-2 text-[#A1A1AA] hover:text-white text-xs font-mono uppercase tracking-widest transition-colors lg:hidden"
-            data-testid="filter-toggle"
-          >
+          <button onClick={() => setFilterOpen(!filterOpen)} className="flex items-center gap-2 text-[#2A3A4F] hover:text-[#0A6CFF] text-xs font-mono uppercase tracking-widest transition-colors lg:hidden" data-testid="filter-toggle">
             <SlidersHorizontal size={16} /> Filtros
           </button>
         </div>
 
         <div className="flex gap-12">
-          {/* Sidebar Filters */}
           <aside className={`${filterOpen ? "block" : "hidden"} lg:block w-full lg:w-48 flex-shrink-0 space-y-8`} data-testid="filter-sidebar">
-            {/* Category */}
             <div>
-              <h4 className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#A1A1AA] mb-3" style={{ fontFamily: "'IBM Plex Mono', monospace" }}>Categoría</h4>
+              <h4 className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#0A6CFF] mb-3">Categoría</h4>
               <div className="flex flex-col gap-1">
                 {CATEGORIES.map(c => (
-                  <button
-                    key={c}
-                    onClick={() => setFilter("category", c)}
-                    className={`text-left text-sm py-1 transition-colors ${(c === "All" && !category) || category === c ? "text-white font-semibold" : "text-[#A1A1AA] hover:text-white"}`}
-                    data-testid={`filter-category-${c.toLowerCase()}`}
-                  >
+                  <button key={c} onClick={() => setFilter("category", c)}
+                    className={`text-left text-sm py-1 transition-colors ${(c === "All" && !category) || category === c ? "text-[#EAF6FF] font-semibold" : "text-[#2A3A4F] hover:text-[#0A6CFF]"}`}
+                    data-testid={`filter-category-${c.toLowerCase()}`}>
                     {c === "All" ? "Todas" : c}
                   </button>
                 ))}
               </div>
             </div>
-
-            {/* Size */}
             <div>
-              <h4 className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#A1A1AA] mb-3" style={{ fontFamily: "'IBM Plex Mono', monospace" }}>Talla</h4>
+              <h4 className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#0A6CFF] mb-3">Talla</h4>
               <div className="flex flex-wrap gap-2">
                 {["S", "M", "L", "XL", "XXL"].map(s => (
-                  <button
-                    key={s}
-                    onClick={() => setFilter("size", size === s ? "" : s)}
-                    className={`w-10 h-10 border text-xs font-mono transition-all ${size === s ? "border-[#ff3c3c] text-white bg-[#ff3c3c]/10" : "border-[#27272A] text-[#A1A1AA] hover:border-white hover:text-white"}`}
-                    data-testid={`filter-size-${s.toLowerCase()}`}
-                  >
-                    {s}
-                  </button>
+                  <button key={s} onClick={() => setFilter("size", size === s ? "" : s)}
+                    className={`w-10 h-10 rounded-lg text-xs font-medium transition-all ${
+                      size === s ? "bg-[#0A6CFF] text-white border border-[#0A6CFF]" : "bg-[#0E1B2A] border border-[#2A3A4F] text-[#EAF6FF]/60 hover:border-[#0A6CFF]"
+                    }`}
+                    data-testid={`filter-size-${s.toLowerCase()}`}>{s}</button>
                 ))}
               </div>
             </div>
-
-            {/* Active filters */}
             {(category || search || size) && (
-              <button
-                onClick={() => setSearchParams({})}
-                className="flex items-center gap-2 text-[#ff3c3c] text-xs font-mono uppercase tracking-wider hover:text-[#e63535] transition-colors"
-                data-testid="clear-filters"
-              >
+              <button onClick={() => setSearchParams({})} className="flex items-center gap-2 text-[#18C8FF] text-xs font-mono uppercase tracking-wider hover:text-[#0A6CFF] transition-colors" data-testid="clear-filters">
                 <X size={14} /> Limpiar Filtros
               </button>
             )}
           </aside>
 
-          {/* Products Grid */}
           <div className="flex-1">
-            <p className="text-[#A1A1AA] text-xs font-mono mb-6" data-testid="product-count">{products.length} producto{products.length !== 1 ? "s" : ""}</p>
+            <p className="text-[#2A3A4F] text-xs font-mono mb-6" data-testid="product-count">{products.length} producto{products.length !== 1 ? "s" : ""}</p>
             {loading ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[#27272A]">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {[1, 2, 3, 4, 5, 6].map(i => (
-                  <div key={i} className="bg-[#0A0A0A] animate-pulse">
-                    <div className="aspect-square bg-[#151515]" />
-                    <div className="p-4 space-y-2">
-                      <div className="h-3 bg-[#151515] w-1/3" />
-                      <div className="h-4 bg-[#151515] w-2/3" />
-                      <div className="h-4 bg-[#151515] w-1/4" />
-                    </div>
+                  <div key={i} className="glass-card animate-pulse overflow-hidden">
+                    <div className="aspect-square bg-[#0E1B2A]" />
+                    <div className="p-5 space-y-2"><div className="h-3 bg-[#0E1B2A] w-1/3 rounded" /><div className="h-4 bg-[#0E1B2A] w-2/3 rounded" /><div className="h-4 bg-[#0E1B2A] w-1/4 rounded" /></div>
                   </div>
                 ))}
               </div>
             ) : products.length === 0 ? (
-              <div className="text-center py-20" data-testid="no-products">
-                <p className="text-[#A1A1AA] text-sm">No se encontraron productos.</p>
-              </div>
+              <div className="text-center py-20" data-testid="no-products"><p className="text-[#2A3A4F] text-sm">No se encontraron productos.</p></div>
             ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[#27272A]">
-                {products.map((product, i) => (
-                  <ProductCard key={product.id} product={product} index={i} />
-                ))}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {products.map((product, i) => <ProductCard key={product.id} product={product} index={i} />)}
               </div>
             )}
           </div>

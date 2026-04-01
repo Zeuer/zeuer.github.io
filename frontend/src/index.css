@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700;800;900&family=DM+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,40 +6,40 @@
 
 body {
   margin: 0;
-  font-family: 'Manrope', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #0A0A0A;
-  color: #ffffff;
+  color: #EAF6FF;
 }
 
 @layer base {
   :root {
-    --background: 0 0% 4%;
-    --foreground: 0 0% 100%;
-    --card: 0 0% 4%;
-    --card-foreground: 0 0% 100%;
-    --popover: 0 0% 8%;
-    --popover-foreground: 0 0% 100%;
-    --primary: 0 100% 62%;
+    --background: 220 20% 4%;
+    --foreground: 205 100% 96%;
+    --card: 215 44% 10%;
+    --card-foreground: 205 100% 96%;
+    --popover: 215 44% 10%;
+    --popover-foreground: 205 100% 96%;
+    --primary: 217 99% 52%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 0 0% 8%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 0 0% 15%;
-    --muted-foreground: 240 4% 65%;
-    --accent: 0 100% 62%;
+    --secondary: 215 30% 15%;
+    --secondary-foreground: 205 100% 96%;
+    --muted: 215 30% 20%;
+    --muted-foreground: 215 20% 50%;
+    --accent: 193 100% 55%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 240 4% 16%;
-    --input: 240 4% 16%;
-    --ring: 0 100% 62%;
-    --chart-1: 0 100% 62%;
-    --chart-2: 142 71% 45%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
+    --border: 215 30% 22%;
+    --input: 215 30% 22%;
+    --ring: 217 99% 52%;
+    --chart-1: 217 99% 52%;
+    --chart-2: 193 100% 55%;
+    --chart-3: 160 100% 50%;
+    --chart-4: 263 58% 68%;
     --chart-5: 27 87% 67%;
-    --radius: 0rem;
+    --radius: 0.75rem;
   }
 }
 

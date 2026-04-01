@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700;800;900&family=DM+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap');
 
 * {
   margin: 0;
@@ -11,15 +11,15 @@ html {
 }
 
 body {
-  font-family: 'Manrope', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   background-color: #0A0A0A;
-  color: #ffffff;
+  color: #EAF6FF;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
-  background-color: #ff3c3c;
+  background-color: #0A6CFF;
   color: white;
 }
 
@@ -32,31 +32,102 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #27272A;
+  background: #2A3A4F;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #ff3c3c;
+  background: #0A6CFF;
 }
 
-/* Smooth image loading */
 img {
   transition: opacity 0.3s ease;
 }
 
-/* Focus styles */
 *:focus-visible {
-  outline: 1px solid #ff3c3c;
+  outline: 1px solid #0A6CFF;
   outline-offset: 2px;
 }
 
-/* Input placeholder */
 input::placeholder,
 textarea::placeholder {
-  color: #52525B;
+  color: #2A3A4F;
 }
 
-/* Sheet override for dark theme */
 [data-radix-popper-content-wrapper] {
   z-index: 50 !important;
+}
+
+/* ==================== ZEUER BRAND EFFECTS ==================== */
+
+/* Blue neon glow keyframes */
+@keyframes zeuer-glow-pulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 20px rgba(10, 108, 255, 0.4)) drop-shadow(0 0 60px rgba(24, 200, 255, 0.2));
+  }
+  50% {
+    filter: drop-shadow(0 0 40px rgba(10, 108, 255, 0.7)) drop-shadow(0 0 100px rgba(24, 200, 255, 0.4));
+  }
+}
+
+@keyframes zeuer-text-glow {
+  0%, 100% {
+    text-shadow: 0 0 20px rgba(10, 108, 255, 0.3), 0 0 60px rgba(24, 200, 255, 0.1);
+  }
+  50% {
+    text-shadow: 0 0 30px rgba(10, 108, 255, 0.5), 0 0 80px rgba(24, 200, 255, 0.3);
+  }
+}
+
+@keyframes float-subtle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes shimmer-border {
+  0% { border-color: rgba(10, 108, 255, 0.3); }
+  50% { border-color: rgba(24, 200, 255, 0.6); }
+  100% { border-color: rgba(10, 108, 255, 0.3); }
+}
+
+.zeuer-logo-glow {
+  animation: zeuer-glow-pulse 3s ease-in-out infinite;
+}
+
+.zeuer-text-glow {
+  animation: zeuer-text-glow 3s ease-in-out infinite;
+}
+
+/* Glassmorphism card */
+.glass-card {
+  background: rgba(14, 27, 42, 0.6);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(10, 108, 255, 0.15);
+  border-radius: 16px;
+}
+
+.glass-card:hover {
+  border-color: rgba(10, 108, 255, 0.4);
+  box-shadow: 0 0 30px rgba(10, 108, 255, 0.1);
+}
+
+/* Blue glow behind elements */
+.blue-glow {
+  box-shadow: 0 0 40px rgba(10, 108, 255, 0.15), 0 0 80px rgba(24, 200, 255, 0.05);
+}
+
+.blue-glow-strong {
+  box-shadow: 0 0 60px rgba(10, 108, 255, 0.3), 0 0 120px rgba(24, 200, 255, 0.1);
+}
+
+/* Product background shape */
+.product-bg-shape {
+  background: linear-gradient(135deg, #0A6CFF 0%, #18C8FF 100%);
+  border-radius: 20px;
+  opacity: 0.9;
+}
+
+/* Shimmer border animation */
+.shimmer-border {
+  animation: shimmer-border 3s ease-in-out infinite;
 }
