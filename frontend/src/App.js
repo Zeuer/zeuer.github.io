@@ -5,6 +5,7 @@ import { AuthProvider } from "./context/AuthContext";
 import { CartProvider } from "./context/CartContext";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import AdminLayout from "./components/AdminLayout";
 import HomePage from "./pages/HomePage";
 import ShopPage from "./pages/ShopPage";
 import ProductPage from "./pages/ProductPage";
@@ -14,7 +15,23 @@ import CheckoutPage from "./pages/CheckoutPage";
 import CheckoutSuccessPage from "./pages/CheckoutSuccessPage";
 import ProfilePage from "./pages/ProfilePage";
 import OrdersPage from "./pages/OrdersPage";
-import AdminPage from "./pages/AdminPage";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminProducts from "./pages/admin/AdminProducts";
+import AdminOrders from "./pages/admin/AdminOrders";
+import AdminUsers from "./pages/admin/AdminUsers";
+import AdminAnalytics from "./pages/admin/AdminAnalytics";
+import AdminContent from "./pages/admin/AdminContent";
+import AdminAI from "./pages/admin/AdminAI";
+
+function StorefrontLayout({ children }) {
+  return (
+    <>
+      <Navbar />
+      <main>{children}</main>
+      <Footer />
+    </>
+  );
+}
 
 function App() {
   return (
@@ -22,22 +39,29 @@ function App() {
       <AuthProvider>
         <CartProvider>
           <div className="App min-h-screen bg-[#0A0A0A] text-white">
-            <Navbar />
-            <main>
-              <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/shop" element={<ShopPage />} />
-                <Route path="/product/:id" element={<ProductPage />} />
-                <Route path="/login" element={<AuthPage />} />
-                <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-                <Route path="/checkout" element={<CheckoutPage />} />
-                <Route path="/checkout/success" element={<CheckoutSuccessPage />} />
-                <Route path="/profile" element={<ProfilePage />} />
-                <Route path="/orders" element={<OrdersPage />} />
-                <Route path="/admin" element={<AdminPage />} />
-              </Routes>
-            </main>
-            <Footer />
+            <Routes>
+              {/* Admin Panel (separate layout, no navbar/footer) */}
+              <Route path="/admin" element={<AdminLayout />}>
+                <Route index element={<AdminDashboard />} />
+                <Route path="products" element={<AdminProducts />} />
+                <Route path="orders" element={<AdminOrders />} />
+                <Route path="users" element={<AdminUsers />} />
+                <Route path="analytics" element={<AdminAnalytics />} />
+                <Route path="content" element={<AdminContent />} />
+                <Route path="ai" element={<AdminAI />} />
+              </Route>
+
+              {/* Storefront */}
+              <Route path="/" element={<StorefrontLayout><HomePage /></StorefrontLayout>} />
+              <Route path="/shop" element={<StorefrontLayout><ShopPage /></StorefrontLayout>} />
+              <Route path="/product/:id" element={<StorefrontLayout><ProductPage /></StorefrontLayout>} />
+              <Route path="/login" element={<StorefrontLayout><AuthPage /></StorefrontLayout>} />
+              <Route path="/forgot-password" element={<StorefrontLayout><ForgotPasswordPage /></StorefrontLayout>} />
+              <Route path="/checkout" element={<StorefrontLayout><CheckoutPage /></StorefrontLayout>} />
+              <Route path="/checkout/success" element={<StorefrontLayout><CheckoutSuccessPage /></StorefrontLayout>} />
+              <Route path="/profile" element={<StorefrontLayout><ProfilePage /></StorefrontLayout>} />
+              <Route path="/orders" element={<StorefrontLayout><OrdersPage /></StorefrontLayout>} />
+            </Routes>
           </div>
         </CartProvider>
       </AuthProvider>
