@@ -48,10 +48,9 @@ export default function HomePage() {
         <div className="relative z-20 text-center px-6">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
             <img
-              src="https://zeuer.github.io/logo.svg"
+              src="/logo.svg"
               alt="Zeuer"
               className="h-20 md:h-28 lg:h-36 mx-auto mb-8 zeuer-logo-glow"
-              style={{ filter: "brightness(0)" }}
               data-testid="hero-logo"
             />
           </motion.div>
@@ -160,7 +159,7 @@ export default function HomePage() {
                 background: "radial-gradient(ellipse at center, rgba(10,108,255,0.4) 0%, transparent 70%)"
               }} />
             </div>
-            <img src="https://zeuer.github.io/logo.svg" alt="Zeuer Brand" className="w-1/2 opacity-5" style={{ filter: "brightness(0) invert(1)" }} />
+            <img src="/logo.svg" alt="Zeuer Brand" className="w-1/2 opacity-5" />
             <div className="absolute inset-0 flex items-center justify-center">
               <p className="text-6xl md:text-8xl font-black text-[#EAF6FF]/[0.02] uppercase tracking-tighter" style={{ fontFamily: "'Unbounded', sans-serif" }}>ZEUER</p>
             </div>

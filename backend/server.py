@@ -620,7 +620,11 @@ async def root():
     return {"message": "Zeuer API v2"}
 
 app.include_router(api_router)
-app.add_middleware(CORSMiddleware, allow_origins=[os.environ.get("FRONTEND_URL", "http://localhost:3000")], allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
+
+# CORS: support multiple origins for Render/Vercel/local
+cors_origins = [o.strip() for o in os.environ.get("CORS_ORIGINS", "").split(",") if o.strip()]
+cors_origins.append(os.environ.get("FRONTEND_URL", "http://localhost:3000"))
+app.add_middleware(CORSMiddleware, allow_origins=cors_origins, allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 

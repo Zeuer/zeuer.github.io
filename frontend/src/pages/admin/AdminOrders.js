@@ -12,14 +12,19 @@ export default function AdminOrders() {
   const [loading, setLoading] = useState(true);
   const [filterStatus, setFilterStatus] = useState("");
 
-  const load = () => {
+  useEffect(() => {
+    const url = filterStatus ? `${API}/api/admin/orders?status=${filterStatus}` : `${API}/api/admin/orders`;
+    axios.get(url, { withCredentials: true }).then(r => { setOrders(r.data); setLoading(false); }).catch(() => setLoading(false));
+  }, [filterStatus]);
+
+  const reload = () => {
+    setLoading(true);
     const url = filterStatus ? `${API}/api/admin/orders?status=${filterStatus}` : `${API}/api/admin/orders`;
     axios.get(url, { withCredentials: true }).then(r => { setOrders(r.data); setLoading(false); }).catch(() => setLoading(false));
   };
-  useEffect(() => { load(); }, [filterStatus]);
 
   const updateStatus = async (id, status) => {
-    await axios.put(`${API}/api/admin/orders/${id}/status`, { status }, { withCredentials: true }); load();
+    await axios.put(`${API}/api/admin/orders/${id}/status`, { status }, { withCredentials: true }); reload();
   };
 
   const exportCSV = () => { window.open(`${API}/api/admin/orders/export`, "_blank"); };

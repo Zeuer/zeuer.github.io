@@ -32,7 +32,7 @@ export default function Navbar() {
         </button>
 
         <Link to="/" className="flex items-center" data-testid="logo-link">
-          <img src="https://zeuer.github.io/logo.svg" alt="Zeuer" className="h-7 md:h-8" style={{ filter: "brightness(0) invert(1) drop-shadow(0 0 8px rgba(10,108,255,0.4))" }} />
+          <img src="/logo.svg" alt="Zeuer" className="h-7 md:h-8" style={{ filter: "drop-shadow(0 0 8px rgba(10,108,255,0.4))" }} />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-8" data-testid="desktop-nav">
