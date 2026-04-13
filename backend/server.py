@@ -406,7 +406,7 @@ async def admin_create_product(input: ProductCreateInput, request: Request):
     pid = ''.join(c for c in pid if c.isalnum() or c == '-')
     existing = await db.products.find_one({"id": pid})
     if existing: pid = f"{pid}-{secrets.token_hex(3)}"
-    product = {"id": pid, "name": input.name, "price": input.price, "description": input.description, "category": input.category, "sizes": input.sizes, "colors": input.colors, "stock": input.stock, "image": input.image or "https://zeuer.github.io/assets/images/jersey.png", "images": input.images or [input.image or "https://zeuer.github.io/assets/images/jersey.png"], "featured": input.featured, "active": input.active, "views": 0, "created_at": datetime.now(timezone.utc).isoformat()}
+    product = {"id": pid, "name": input.name, "price": input.price, "description": input.description, "category": input.category, "sizes": input.sizes, "colors": input.colors, "stock": input.stock, "image": input.image or "/assets/images/jersey.png", "images": input.images or [input.image or "/assets/images/jersey.png"], "featured": input.featured, "active": input.active, "views": 0, "created_at": datetime.now(timezone.utc).isoformat()}
     await db.products.insert_one(product)
     product.pop("_id", None)
     return product
@@ -630,18 +630,21 @@ logger = logging.getLogger(__name__)
 
 # ============ SEED ============
 PRODUCTS = [
-    {"id": "irapuato-retro", "name": "Kit Irapuato '67", "price": 449.00, "description": "Un clásico de 1967. Revive la historia con esta pieza icónica de streetwear táctico. Tejido premium con acabado retro auténtico.", "image": "https://zeuer.github.io/assets/images/jersey.png", "images": ["https://zeuer.github.io/assets/images/jersey.png"], "category": "Jerseys", "sizes": ["S", "M", "L", "XL", "XXL"], "colors": [{"name": "Rojo Clásico", "hex": "#ff3c3c"}], "stock": 25, "views": 0, "featured": True, "active": True},
-    {"id": "zeuer-dwnc", "name": "Zeuer x DWNC", "price": 599.00, "description": "Recuerda ser quien quieras ser. Colaboración exclusiva con diseño de vanguardia. Edición limitada.", "image": "https://zeuer.github.io/assets/images/dwnc.png", "images": ["https://zeuer.github.io/assets/images/dwnc.png"], "category": "Collaborations", "sizes": ["S", "M", "L", "XL"], "colors": [{"name": "Negro", "hex": "#1a1a1a"}], "stock": 15, "views": 0, "featured": True, "active": True},
-    {"id": "zeuer-gb", "name": "Zeuer GB Concept", "price": 649.00, "description": "Excelencia académica. Diseño conceptual para el atleta moderno. Corte técnico con materiales de competición.", "image": "https://zeuer.github.io/assets/images/zgb.png", "images": ["https://zeuer.github.io/assets/images/zgb.png"], "category": "Concepts", "sizes": ["S", "M", "L", "XL", "XXL"], "colors": [{"name": "Blanco", "hex": "#ffffff"}], "stock": 20, "views": 0, "featured": True, "active": True},
-    {"id": "zeuer-stealth", "name": "Zeuer Stealth Tee", "price": 349.00, "description": "Camiseta técnica con corte oversize. Tela respirable de alto rendimiento con logo bordado.", "image": "https://zeuer.github.io/assets/images/dwnc.png", "images": ["https://zeuer.github.io/assets/images/dwnc.png"], "category": "Basics", "sizes": ["S", "M", "L", "XL"], "colors": [{"name": "Negro", "hex": "#0a0a0a"}, {"name": "Blanco", "hex": "#f5f5f5"}], "stock": 40, "views": 0, "featured": False, "active": True},
-    {"id": "zeuer-track-pants", "name": "Zeuer Track Pants", "price": 549.00, "description": "Pantalón deportivo con corte táctico. Banda lateral con logo Zeuer. Tela stretch premium.", "image": "https://zeuer.github.io/assets/images/zgb.png", "images": ["https://zeuer.github.io/assets/images/zgb.png"], "category": "Bottoms", "sizes": ["S", "M", "L", "XL"], "colors": [{"name": "Negro", "hex": "#0a0a0a"}], "stock": 30, "views": 0, "featured": False, "active": True},
-    {"id": "zeuer-cap", "name": "Zeuer Logo Cap", "price": 299.00, "description": "Gorra estructurada con logo Zeuer bordado. Ajuste snapback. Edición limitada.", "image": "https://zeuer.github.io/assets/images/jersey.png", "images": ["https://zeuer.github.io/assets/images/jersey.png"], "category": "Accessories", "sizes": ["ONE SIZE"], "colors": [{"name": "Negro", "hex": "#0a0a0a"}, {"name": "Rojo", "hex": "#ff3c3c"}], "stock": 50, "views": 0, "featured": False, "active": True}
+    {"id": "irapuato-retro", "name": "Kit Irapuato '67", "price": 449.00, "description": "Un clásico de 1967. Revive la historia con esta pieza icónica de streetwear táctico. Tejido premium con acabado retro auténtico.", "image": "/assets/images/jersey.png", "images": ["/assets/images/jersey.png"], "category": "Jerseys", "sizes": ["S", "M", "L", "XL", "XXL"], "colors": [{"name": "Rojo Clásico", "hex": "#ff3c3c"}], "stock": 25, "views": 0, "featured": True, "active": True},
+    {"id": "zeuer-dwnc", "name": "Zeuer x DWNC", "price": 599.00, "description": "Recuerda ser quien quieras ser. Colaboración exclusiva con diseño de vanguardia. Edición limitada.", "image": "/assets/images/dwnc.png", "images": ["/assets/images/dwnc.png"], "category": "Collaborations", "sizes": ["S", "M", "L", "XL"], "colors": [{"name": "Negro", "hex": "#1a1a1a"}], "stock": 15, "views": 0, "featured": True, "active": True},
+    {"id": "zeuer-gb", "name": "Zeuer GB Concept", "price": 649.00, "description": "Excelencia académica. Diseño conceptual para el atleta moderno. Corte técnico con materiales de competición.", "image": "/assets/images/zgb.png", "images": ["/assets/images/zgb.png"], "category": "Concepts", "sizes": ["S", "M", "L", "XL", "XXL"], "colors": [{"name": "Blanco", "hex": "#ffffff"}], "stock": 20, "views": 0, "featured": True, "active": True},
+    {"id": "zeuer-stealth", "name": "Zeuer Stealth Tee", "price": 349.00, "description": "Camiseta técnica con corte oversize. Tela respirable de alto rendimiento con logo bordado.", "image": "/assets/images/dwnc.png", "images": ["/assets/images/dwnc.png"], "category": "Basics", "sizes": ["S", "M", "L", "XL"], "colors": [{"name": "Negro", "hex": "#0a0a0a"}, {"name": "Blanco", "hex": "#f5f5f5"}], "stock": 40, "views": 0, "featured": False, "active": True},
+    {"id": "zeuer-track-pants", "name": "Zeuer Track Pants", "price": 549.00, "description": "Pantalón deportivo con corte táctico. Banda lateral con logo Zeuer. Tela stretch premium.", "image": "/assets/images/zgb.png", "images": ["/assets/images/zgb.png"], "category": "Bottoms", "sizes": ["S", "M", "L", "XL"], "colors": [{"name": "Negro", "hex": "#0a0a0a"}], "stock": 30, "views": 0, "featured": False, "active": True},
+    {"id": "zeuer-cap", "name": "Zeuer Logo Cap", "price": 299.00, "description": "Gorra estructurada con logo Zeuer bordado. Ajuste snapback. Edición limitada.", "image": "/assets/images/jersey.png", "images": ["/assets/images/jersey.png"], "category": "Accessories", "sizes": ["ONE SIZE"], "colors": [{"name": "Negro", "hex": "#0a0a0a"}, {"name": "Rojo", "hex": "#ff3c3c"}], "stock": 50, "views": 0, "featured": False, "active": True}
 ]
 
 async def seed_products():
     for p in PRODUCTS:
         existing = await db.products.find_one({"id": p["id"]})
-        if not existing: await db.products.insert_one(p)
+        if not existing:
+            await db.products.insert_one(p)
+        elif existing.get("image", "").startswith("https://zeuer.github.io"):
+            await db.products.update_one({"id": p["id"]}, {"$set": {"image": p["image"], "images": p["images"]}})
 
 async def seed_admin():
     admin_email = os.environ.get("ADMIN_EMAIL", "admin@zeuer.com")

@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           <div className="md:col-span-2">
-            <img src="/logo.svg" alt="Zeuer" className="h-8 mb-4" style={{ filter: "drop-shadow(0 0 6px rgba(10,108,255,0.3))" }} />
+            <img src="/logo-simple.svg" alt="Zeuer" className="h-8 mb-4" style={{ filter: "drop-shadow(0 0 6px rgba(10,108,255,0.3))" }} />
             <p className="text-[#2A3A4F] text-sm max-w-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
               Técnico. Táctico. Lógico. Zeuer nace desde la disciplina y la superación personal. No seguimos tendencias, creamos identidad.
             </p>

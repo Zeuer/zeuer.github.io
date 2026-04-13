@@ -35,7 +35,7 @@ export default function AdminLayout() {
       {/* Sidebar */}
       <aside className={`fixed lg:static inset-y-0 left-0 z-50 w-64 bg-[#060911] border-r border-[#0E1B2A] flex flex-col transform transition-transform lg:translate-x-0 ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}`} data-testid="admin-sidebar">
         <div className="h-16 flex items-center px-6 border-b border-[#0E1B2A]">
-          <img src="/logo.svg" alt="Zeuer" className="h-6" style={{ filter: "drop-shadow(0 0 6px rgba(10,108,255,0.4))" }} />
+          <img src="/logo-simple.svg" alt="Zeuer" className="h-6" style={{ filter: "drop-shadow(0 0 6px rgba(10,108,255,0.4))" }} />
           <span className="ml-2 text-[10px] font-mono uppercase tracking-widest text-[#0A6CFF]">Admin</span>
           <button className="lg:hidden ml-auto text-[#2A3A4F]" onClick={() => setSidebarOpen(false)}><X size={20} /></button>
         </div>

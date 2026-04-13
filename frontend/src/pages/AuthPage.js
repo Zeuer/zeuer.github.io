@@ -45,7 +45,7 @@ export default function AuthPage() {
 
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="w-full max-w-md relative z-10">
         <div className="text-center mb-10">
-          <img src="/logo.svg" alt="Zeuer" className="h-10 mx-auto mb-6 zeuer-logo-glow" />
+          <img src="/logo-simple.svg" alt="Zeuer" className="h-10 mx-auto mb-6 zeuer-logo-glow" />
           <h1 className="text-2xl font-bold text-[#EAF6FF] uppercase tracking-tight" style={{ fontFamily: "'Unbounded', sans-serif" }}>
             {isLogin ? "Iniciar Sesión" : "Crear Cuenta"}
           </h1>
